@@ -53,3 +53,13 @@ ul {
 		gap: 5px;
 	}
 }
+
+body {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+}
+
+main > div > div {
+	display: flex;
+	gap: 5px;
+}
