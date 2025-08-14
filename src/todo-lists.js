@@ -1,7 +1,10 @@
+import { displayTodoList } from "./dom-functions";
+
 export class TodoList {
 	constructor(title) {
 		this.title = title;
 		this.items = [];
+		displayTodoList(this.title);
 	}
 	addTodoItem(item) {
 		this.items.push(item);
