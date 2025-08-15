@@ -2,7 +2,7 @@ import tagIcon from "./icons/tag.svg";
 import pinIcon from "./icons/pin.svg";
 
 export function displaySidebarTodoList(todoList) {
-	const sidebar = document.getElementById("sidebar");
+	const sidebar = document.getElementById("sidebar-todolists");
 
 	const todoListContainer = document.createElement("div");
 	const todoListIcon = document.createElement("img");

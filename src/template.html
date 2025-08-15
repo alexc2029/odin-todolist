@@ -8,6 +8,27 @@
 	<body>
 		<aside id="sidebar">
 			<h2>Todo List</h2>
+			<div id="sidebar-todolists"></div>
+			<button id="new-todolist">
+				<img src="./icons/add-todolist.svg" />
+				Add List
+			</button>
+			<dialog id="new-todolist-modal">
+				<form id="addTodoList">
+					<div>
+						<label for="title">Name:</label>
+						<input type="text" name="title" id="title" />
+					</div>
+					<div>
+						<button type="submit" formmethod="dialog">
+							Cancel
+						</button>
+						<button type="submit" id="submit-new-todolist">
+							Add List
+						</button>
+					</div>
+				</form>
+			</dialog>
 		</aside>
 		<main>
 			<h1></h1>

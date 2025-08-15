@@ -50,3 +50,21 @@ export function initializeDefaultTodo() {
 	);
 	return todoLists;
 }
+
+export function initializeNewListModal() {
+	const addListButton = document.getElementById("new-todolist");
+	const addListModal = document.getElementById("new-todolist-modal");
+
+	addListButton.addEventListener("click", () => {
+		addListModal.showModal();
+	});
+
+	let submitListModal = document.getElementById("submit-new-todolist");
+
+	submitListModal.addEventListener("click", (e) => {
+		e.preventDefault();
+		const title = document.getElementById("title");
+		createTodoList(title.value);
+		addListModal.close();
+	});
+}
