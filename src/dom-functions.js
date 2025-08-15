@@ -1,7 +1,7 @@
 import tagIcon from "./icons/tag.svg";
 import pinIcon from "./icons/pin.svg";
 
-export function displaySidebarTodoList(todoListTitle) {
+export function displaySidebarTodoList(todoList) {
 	const sidebar = document.getElementById("sidebar");
 
 	const todoListContainer = document.createElement("div");
@@ -9,17 +9,19 @@ export function displaySidebarTodoList(todoListTitle) {
 	todoListIcon.src = tagIcon;
 	todoListContainer.appendChild(todoListIcon);
 	const todoListName = document.createElement("div");
-	todoListName.textContent = todoListTitle;
+	todoListName.textContent = todoList.title;
 	todoListContainer.appendChild(todoListName);
 
 	sidebar.appendChild(todoListContainer);
+
+	return todoListContainer;
 }
 
 export function displayTodoItems(todoList) {
 	const todoListTitle = document.querySelector("main h1");
 	todoListTitle.textContent = todoList.title;
-	const main = document.querySelector("main");
-	console.log(todoList.items);
+	const main = document.querySelector("main .todo-list");
+	main.textContent = "";
 	for (const item of todoList.items) {
 		const card = document.createElement("div");
 

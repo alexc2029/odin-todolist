@@ -59,7 +59,7 @@ body {
 	grid-template-columns: 1fr 4fr;
 }
 
-main > div > div {
+.todo-list > div > div {
 	display: flex;
 	gap: 5px;
 }
