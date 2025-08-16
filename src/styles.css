@@ -63,3 +63,19 @@ body {
 	display: flex;
 	gap: 5px;
 }
+
+.show-collapsible-info {
+	cursor: pointer;
+}
+
+.active,
+.show-collapsible-info:hover {
+	background-color: gray;
+}
+
+.collapsible-info {
+	visibility: hidden;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
