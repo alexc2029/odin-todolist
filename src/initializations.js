@@ -59,12 +59,53 @@ export function initializeNewListModal() {
 		addListModal.showModal();
 	});
 
-	let submitListModal = document.getElementById("submit-new-todolist");
+	const submitListFormButton = document.getElementById("submit-new-todolist");
 
-	submitListModal.addEventListener("click", (e) => {
+	submitListFormButton.addEventListener("click", (e) => {
 		e.preventDefault();
 		const title = document.getElementById("title");
 		createTodoList(title.value);
 		addListModal.close();
+	});
+}
+
+export function initializeNewItemModal(todoLists) {
+	const addItemButton = document.getElementById("new-todoitem-button");
+	const addItemModal = document.getElementById("new-todoitem-modal");
+
+	const list = document.getElementById("list");
+
+	for (let listElement of todoLists) {
+		const listOption = document.createElement("option");
+		listOption.value = listElement.title;
+		listOption.textContent = listElement.title;
+		list.appendChild(listOption);
+	}
+
+	addItemButton.addEventListener("click", () => {
+		addItemModal.showModal();
+	});
+
+	const submitItemFormButton = document.getElementById("submit-new-todoitem");
+
+	submitItemFormButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		const listSubmitted = document.getElementById("list");
+		const title = document.getElementById("item-title");
+		const description = document.getElementById("item-description");
+		const date = document.getElementById("item-date");
+		const priority = document.getElementById("item-priority");
+
+		const todoitem = createTodoItem(
+			title.value,
+			description.value,
+			date.value,
+			priority.value
+		);
+		const listIndex = todoLists.findIndex(
+			(todolist) => todolist.title == listSubmitted.value
+		);
+		todoLists[listIndex].addTodoItem(todoitem);
+		addItemModal.close();
 	});
 }
