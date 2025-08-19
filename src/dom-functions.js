@@ -1,5 +1,6 @@
 import tagIcon from "./icons/tag.svg";
 import pinIcon from "./icons/pin.svg";
+import checkCircleEmptyIcon from "./icons/check-circle-empty.svg";
 import { addCollapsibleInfoListeners } from "./event-listeners";
 
 export function displaySidebarTodoList(todoList) {
@@ -26,20 +27,17 @@ export function displayTodoItems(todoList) {
 	for (const item of todoList.items) {
 		const card = document.createElement("div");
 
-		const titleContainer = document.createElement("div");
-		titleContainer.className = "show-collapsible-info";
+		const topRow = document.createElement("h2");
+		topRow.textContent = item.title;
+		topRow.className = "show-collapsible-info";
 
-		const title = document.createElement("h2");
-		title.textContent = item.title;
-
-		const pin = document.createElement("img");
-		pin.src = pinIcon;
-
-		titleContainer.appendChild(title);
-		titleContainer.appendChild(pin);
+		const checkCircleEmpty = document.createElement("img");
+		checkCircleEmpty.src = checkCircleEmptyIcon;
+		checkCircleEmpty.className = "check-circle";
 
 		const dueDate = document.createElement("div");
 		dueDate.textContent = item.dueDate;
+		dueDate.className = "due-date";
 
 		const collapsibleInfo = document.createElement("div");
 		collapsibleInfo.className = "collapsible-info";
@@ -52,7 +50,8 @@ export function displayTodoItems(todoList) {
 		collapsibleInfo.appendChild(description);
 		collapsibleInfo.appendChild(priority);
 
-		card.appendChild(titleContainer);
+		card.appendChild(checkCircleEmpty);
+		card.appendChild(topRow);
 		card.appendChild(dueDate);
 		card.append(collapsibleInfo);
 

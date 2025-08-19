@@ -59,23 +59,45 @@ body {
 	grid-template-columns: 1fr 4fr;
 }
 
-.todo-list > div > div {
+.todo-list {
 	display: flex;
-	gap: 5px;
-}
+	flex-direction: column;
+	gap: 10px;
+	& > div {
+		display: grid;
+		grid-template-columns: 20px 1fr;
+		grid-template-rows: auto auto;
+		column-gap: 8px;
+	}
 
-.show-collapsible-info {
-	cursor: pointer;
+	& .check-circle {
+		grid-column: 1;
+		grid-row: 1;
+		place-self: center;
+	}
+
+	& > div > .show-collapsible-info {
+		cursor: pointer;
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	& .due-date {
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	& .collapsible-info {
+		grid-column: 2;
+		grid-row: 3;
+		visibility: hidden;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.2s ease-out;
+	}
 }
 
 .active,
 .show-collapsible-info:hover {
 	background-color: gray;
-}
-
-.collapsible-info {
-	visibility: hidden;
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.2s ease-out;
 }
