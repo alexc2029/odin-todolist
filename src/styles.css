@@ -70,7 +70,7 @@ body {
 		column-gap: 8px;
 	}
 
-	& .check-circle {
+	& .todo-check {
 		grid-column: 1;
 		grid-row: 1;
 		place-self: center;

@@ -1,4 +1,5 @@
 import { displayTodoItems } from "./dom-functions";
+import { TodoList } from "./todo-lists";
 
 export function addViewTodolistListener(todoListContainer, todoList) {
 	todoListContainer.addEventListener("click", () => {
@@ -24,4 +25,10 @@ export function addCollapsibleInfoListeners() {
 			}
 		});
 	}
+}
+
+export function addTodoCheckListener(item, todoList, checkbox) {
+	checkbox.addEventListener("click", () => {
+		todoList.deleteTodoItem(item);
+	});
 }

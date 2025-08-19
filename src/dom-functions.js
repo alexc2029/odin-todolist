@@ -1,7 +1,10 @@
 import tagIcon from "./icons/tag.svg";
 import pinIcon from "./icons/pin.svg";
 import checkCircleEmptyIcon from "./icons/check-circle-empty.svg";
-import { addCollapsibleInfoListeners } from "./event-listeners";
+import {
+	addCollapsibleInfoListeners,
+	addTodoCheckListener,
+} from "./event-listeners";
 
 export function displaySidebarTodoList(todoList) {
 	const sidebar = document.getElementById("sidebar-todolists");
@@ -31,9 +34,12 @@ export function displayTodoItems(todoList) {
 		topRow.textContent = item.title;
 		topRow.className = "show-collapsible-info";
 
-		const checkCircleEmpty = document.createElement("img");
-		checkCircleEmpty.src = checkCircleEmptyIcon;
-		checkCircleEmpty.className = "check-circle";
+		const checkbox = document.createElement("input");
+		checkbox.type = "checkbox";
+		checkbox.className = "todo-check";
+
+		/// should find a way to call this from somewhere else
+		addTodoCheckListener(item, todoList, checkbox);
 
 		const dueDate = document.createElement("div");
 		dueDate.textContent = item.dueDate;
@@ -50,12 +56,13 @@ export function displayTodoItems(todoList) {
 		collapsibleInfo.appendChild(description);
 		collapsibleInfo.appendChild(priority);
 
-		card.appendChild(checkCircleEmpty);
+		card.appendChild(checkbox);
 		card.appendChild(topRow);
 		card.appendChild(dueDate);
 		card.append(collapsibleInfo);
 
 		main.appendChild(card);
 	}
+	/// should find a way to call this from somewhere else
 	addCollapsibleInfoListeners();
 }

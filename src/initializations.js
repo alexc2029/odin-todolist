@@ -1,4 +1,5 @@
 import { createTodoItem, TodoList, createTodoList } from "./todo-lists";
+import { displayTodoItems } from "./dom-functions";
 
 export function initializeDefaultTodo() {
 	let todoLists = [];
@@ -107,5 +108,6 @@ export function initializeNewItemModal(todoLists) {
 		);
 		todoLists[listIndex].addTodoItem(todoitem);
 		addItemModal.close();
+		displayTodoItems(todoLists[listIndex]);
 	});
 }
