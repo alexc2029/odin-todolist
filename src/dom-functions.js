@@ -1,6 +1,5 @@
 import tagIcon from "./icons/tag.svg";
-import pinIcon from "./icons/pin.svg";
-import checkCircleEmptyIcon from "./icons/check-circle-empty.svg";
+import editSvg from "./icons/edit.svg";
 import {
 	addCollapsibleInfoListeners,
 	addTodoCheckListener,
@@ -30,9 +29,14 @@ export function displayTodoItems(todoList) {
 	for (const item of todoList.items) {
 		const card = document.createElement("div");
 
-		const topRow = document.createElement("h2");
-		topRow.textContent = item.title;
-		topRow.className = "show-collapsible-info";
+		const topRow = document.createElement("div");
+		topRow.className = "top-row";
+
+		const title = document.createElement("h2");
+		title.textContent = item.title;
+		title.className = "show-collapsible-info";
+
+		topRow.appendChild(title);
 
 		const checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
@@ -40,6 +44,11 @@ export function displayTodoItems(todoList) {
 
 		/// should find a way to call this from somewhere else
 		addTodoCheckListener(item, todoList, checkbox);
+
+		const editIcon = document.createElement("img");
+		editIcon.src = editSvg;
+		editIcon.className = "edit-icon";
+		topRow.appendChild(editIcon);
 
 		const dueDate = document.createElement("div");
 		dueDate.textContent = item.dueDate;

@@ -12,7 +12,9 @@ export function addCollapsibleInfoListeners() {
 	for (let collapsible of collapsibles) {
 		collapsible.addEventListener("click", function () {
 			this.classList.toggle("active");
-			let content = this.nextElementSibling.nextElementSibling;
+			this.parentElement.classList.toggle("active");
+			let content =
+				this.parentElement.nextElementSibling.nextElementSibling;
 			if (content.style.visibility === "visible") {
 				content.style.visibility = "hidden";
 			} else {

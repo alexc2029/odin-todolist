@@ -76,6 +76,32 @@ body {
 		place-self: center;
 	}
 
+	& .edit-icon {
+		visibility: hidden;
+		place-self: center;
+		margin-left: 10px;
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	& .top-row {
+		display: flex;
+		align-items: center;
+		width: fit-content;
+	}
+
+	& .top-row:hover,
+	.top-row.active {
+		background-color: gray;
+		& .edit-icon {
+			visibility: visible;
+		}
+	}
+
+	& .active + .edit-icon {
+		visibility: visible;
+	}
+
 	& > div > .show-collapsible-info {
 		cursor: pointer;
 		grid-column: 2;
@@ -95,9 +121,4 @@ body {
 		overflow: hidden;
 		transition: max-height 0.2s ease-out;
 	}
-}
-
-.active,
-.show-collapsible-info:hover {
-	background-color: gray;
 }
