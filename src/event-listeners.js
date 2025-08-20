@@ -34,3 +34,7 @@ export function addTodoCheckListener(item, todoList, checkbox) {
 		todoList.deleteTodoItem(item);
 	});
 }
+
+export function addTodoEditListener(item, todoList, editButton) {
+	//todo
+}

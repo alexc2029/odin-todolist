@@ -1,51 +1,72 @@
 import { createTodoItem, TodoList, createTodoList } from "./todo-lists";
 import { displayTodoItems } from "./dom-functions";
+import { createFormattedDate } from "./dates";
 
 export function initializeDefaultTodo() {
 	let todoLists = [];
 	todoLists.push(createTodoList("Default"));
 	todoLists[0].addTodoItem(
-		createTodoItem("Sample Task 1", "This is the first default todo", 25, 1)
+		createTodoItem(
+			"Sample Task 1",
+			"This is the first default todo",
+			createFormattedDate(9, 25),
+			1
+		)
 	);
 	todoLists[0].addTodoItem(
 		createTodoItem(
 			"Sample Task 2",
 			"This is the second default todo",
-			30,
+			createFormattedDate(10, 30),
 			2
 		)
 	);
 	todoLists[0].addTodoItem(
-		createTodoItem("Sample Task 3", "This is the third default todo", 20, 1)
+		createTodoItem(
+			"Sample Task 3",
+			"This is the third default todo",
+			createFormattedDate(11, 19),
+			1
+		)
 	);
 	todoLists[0].addTodoItem(
 		createTodoItem(
 			"Sample Task 4",
 			"This is the fourth default todo",
-			27,
+			createFormattedDate(12, 17),
 			2
 		)
 	);
 	todoLists.push(createTodoList("Default 2"));
 	todoLists[1].addTodoItem(
-		createTodoItem("Sample Task 1", "This is the first default todo", 25, 1)
+		createTodoItem(
+			"Sample Task 1",
+			"This is the first default todo",
+			createFormattedDate(2, 6, 2026),
+			1
+		)
 	);
 	todoLists[1].addTodoItem(
 		createTodoItem(
 			"Sample Task 2",
 			"This is the second default todo",
-			30,
+			createFormattedDate(9, 25),
 			2
 		)
 	);
 	todoLists[1].addTodoItem(
-		createTodoItem("Sample Task 3", "This is the third default todo", 20, 1)
+		createTodoItem(
+			"Sample Task 3",
+			"This is the third default todo",
+			createFormattedDate(10, 30),
+			1
+		)
 	);
 	todoLists[1].addTodoItem(
 		createTodoItem(
 			"Sample Task 4",
 			"This is the fourth default todo",
-			27,
+			createFormattedDate(11, 19),
 			2
 		)
 	);
@@ -100,7 +121,7 @@ export function initializeNewItemModal(todoLists) {
 		const todoitem = createTodoItem(
 			title.value,
 			description.value,
-			date.value,
+			format(date.value, "MM/dd/yyyy"),
 			priority.value
 		);
 		const listIndex = todoLists.findIndex(
