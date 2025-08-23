@@ -28,7 +28,7 @@ export function displayTodoItems(todoList) {
 	todoListTitle.textContent = todoList.title;
 	const main = document.querySelector("main .todo-list");
 	main.textContent = "";
-	for (const item of todoList.items) {
+	for (let item of todoList.items) {
 		const card = document.createElement("div");
 
 		const topRow = document.createElement("div");
@@ -53,7 +53,7 @@ export function displayTodoItems(todoList) {
 		topRow.appendChild(editIcon);
 
 		/// should find a way to call this from somewhere else
-		initializeEditItemModal(item, editIcon);
+		initializeEditItemModal(item, editIcon, todoList);
 
 		const dueDate = document.createElement("div");
 		dueDate.textContent = formatDate(item.dueDate);

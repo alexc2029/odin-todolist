@@ -61,7 +61,7 @@ export function initializeNewItemModal(todoLists) {
 	});
 }
 
-export function initializeEditItemModal(item, editIcon) {
+export function initializeEditItemModal(item, editIcon, todoList) {
 	const editItemButton = editIcon;
 	const editItemModal = document.getElementById("edit-todoitem-modal");
 
@@ -78,5 +78,38 @@ export function initializeEditItemModal(item, editIcon) {
 		console.log(date.value);
 		console.log(priority.value);
 		editItemModal.showModal();
+
+		const submitEditItemButton = document.getElementById(
+			"submit-edit-todoitem"
+		);
+
+		function handleEditItemForm(e) {
+			{
+				e.preventDefault();
+				const title = document.getElementById("edit-item-title");
+				const description = document.getElementById(
+					"edit-item-description"
+				);
+				const date = document.getElementById("edit-item-date");
+				const priority = document.getElementById("edit-item-priority");
+
+				console.log(e.target);
+
+				item.title = title.value;
+				item.description = description.value;
+				item.dueDate = date.value;
+				item.priority = priority.value;
+
+				displayTodoItems(todoList);
+
+				editItemModal.close();
+				submitEditItemButton.removeEventListener(
+					"click",
+					handleEditItemForm
+				);
+			}
+		}
+
+		submitEditItemButton.addEventListener("click", handleEditItemForm);
 	});
 }
