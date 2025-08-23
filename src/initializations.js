@@ -1,6 +1,6 @@
-import { createTodoItem, TodoList, createTodoList } from "./todo-lists";
-import { displayTodoItems } from "./dom-functions";
-import { createFormattedDate } from "./dates";
+import { createTodoItem, createTodoList } from "./todo-lists";
+
+import { createDate } from "./dates";
 
 export function initializeDefaultTodo() {
 	let todoLists = [];
@@ -9,32 +9,32 @@ export function initializeDefaultTodo() {
 		createTodoItem(
 			"Sample Task 1",
 			"This is the first default todo",
-			createFormattedDate(9, 25),
-			1
+			createDate(9, 25),
+			"Urgent"
 		)
 	);
 	todoLists[0].addTodoItem(
 		createTodoItem(
 			"Sample Task 2",
 			"This is the second default todo",
-			createFormattedDate(10, 30),
-			2
+			createDate(10, 30),
+			"Important"
 		)
 	);
 	todoLists[0].addTodoItem(
 		createTodoItem(
 			"Sample Task 3",
 			"This is the third default todo",
-			createFormattedDate(11, 19),
-			1
+			createDate(11, 19),
+			"Low Priority"
 		)
 	);
 	todoLists[0].addTodoItem(
 		createTodoItem(
 			"Sample Task 4",
 			"This is the fourth default todo",
-			createFormattedDate(12, 17),
-			2
+			createDate(12, 17),
+			"Important"
 		)
 	);
 	todoLists.push(createTodoList("Default 2"));
@@ -42,93 +42,33 @@ export function initializeDefaultTodo() {
 		createTodoItem(
 			"Sample Task 1",
 			"This is the first default todo",
-			createFormattedDate(2, 6, 2026),
-			1
+			createDate(2, 6, 2026),
+			"Urgent"
 		)
 	);
 	todoLists[1].addTodoItem(
 		createTodoItem(
 			"Sample Task 2",
 			"This is the second default todo",
-			createFormattedDate(9, 25),
-			2
+			createDate(9, 25),
+			"Important"
 		)
 	);
 	todoLists[1].addTodoItem(
 		createTodoItem(
 			"Sample Task 3",
 			"This is the third default todo",
-			createFormattedDate(10, 30),
-			1
+			createDate(10, 30),
+			"Low Priority"
 		)
 	);
 	todoLists[1].addTodoItem(
 		createTodoItem(
 			"Sample Task 4",
 			"This is the fourth default todo",
-			createFormattedDate(11, 19),
-			2
+			createDate(11, 19),
+			"Important"
 		)
 	);
 	return todoLists;
-}
-
-export function initializeNewListModal() {
-	const addListButton = document.getElementById("new-todolist");
-	const addListModal = document.getElementById("new-todolist-modal");
-
-	addListButton.addEventListener("click", () => {
-		addListModal.showModal();
-	});
-
-	const submitListFormButton = document.getElementById("submit-new-todolist");
-
-	submitListFormButton.addEventListener("click", (e) => {
-		e.preventDefault();
-		const title = document.getElementById("title");
-		createTodoList(title.value);
-		addListModal.close();
-	});
-}
-
-export function initializeNewItemModal(todoLists) {
-	const addItemButton = document.getElementById("new-todoitem-button");
-	const addItemModal = document.getElementById("new-todoitem-modal");
-
-	const list = document.getElementById("list");
-
-	for (let listElement of todoLists) {
-		const listOption = document.createElement("option");
-		listOption.value = listElement.title;
-		listOption.textContent = listElement.title;
-		list.appendChild(listOption);
-	}
-
-	addItemButton.addEventListener("click", () => {
-		addItemModal.showModal();
-	});
-
-	const submitItemFormButton = document.getElementById("submit-new-todoitem");
-
-	submitItemFormButton.addEventListener("click", (e) => {
-		e.preventDefault();
-		const listSubmitted = document.getElementById("list");
-		const title = document.getElementById("item-title");
-		const description = document.getElementById("item-description");
-		const date = document.getElementById("item-date");
-		const priority = document.getElementById("item-priority");
-
-		const todoitem = createTodoItem(
-			title.value,
-			description.value,
-			format(date.value, "MM/dd/yyyy"),
-			priority.value
-		);
-		const listIndex = todoLists.findIndex(
-			(todolist) => todolist.title == listSubmitted.value
-		);
-		todoLists[listIndex].addTodoItem(todoitem);
-		addItemModal.close();
-		displayTodoItems(todoLists[listIndex]);
-	});
 }

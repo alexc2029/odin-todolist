@@ -4,6 +4,8 @@ import {
 	addCollapsibleInfoListeners,
 	addTodoCheckListener,
 } from "./event-listeners";
+import { initializeEditItemModal } from "./modals";
+import { formatDate } from "./dates";
 
 export function displaySidebarTodoList(todoList) {
 	const sidebar = document.getElementById("sidebar-todolists");
@@ -50,8 +52,11 @@ export function displayTodoItems(todoList) {
 		editIcon.className = "edit-icon";
 		topRow.appendChild(editIcon);
 
+		/// should find a way to call this from somewhere else
+		initializeEditItemModal(item, editIcon);
+
 		const dueDate = document.createElement("div");
-		dueDate.textContent = item.dueDate;
+		dueDate.textContent = formatDate(item.dueDate);
 		dueDate.className = "due-date";
 
 		const collapsibleInfo = document.createElement("div");
