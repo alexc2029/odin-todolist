@@ -49,7 +49,7 @@ export function initializeNewItemModal(todoLists) {
 		const todoitem = createTodoItem(
 			title.value,
 			description.value,
-			date.value,
+			new Date(date.value),
 			priority.value
 		);
 		const listIndex = todoLists.findIndex(
@@ -75,8 +75,6 @@ export function initializeEditItemModal(item, editIcon, todoList) {
 		description.value = item.description;
 		date.valueAsDate = item.dueDate;
 		priority.value = item.priority;
-		console.log(date.value);
-		console.log(priority.value);
 		editItemModal.showModal();
 
 		const submitEditItemButton = document.getElementById(
@@ -97,7 +95,7 @@ export function initializeEditItemModal(item, editIcon, todoList) {
 
 				item.title = title.value;
 				item.description = description.value;
-				item.dueDate = date.value;
+				item.dueDate = new Date(date.value);
 				item.priority = priority.value;
 
 				displayTodoItems(todoList);
