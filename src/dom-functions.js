@@ -66,6 +66,7 @@ export function displayTodoItems(todoList) {
 		description.textContent = item.description;
 		const priority = document.createElement("div");
 		priority.textContent = item.priority;
+		colorCodePriority(priority);
 
 		collapsibleInfo.appendChild(description);
 		collapsibleInfo.appendChild(priority);
@@ -79,4 +80,13 @@ export function displayTodoItems(todoList) {
 	}
 	/// should find a way to call this from somewhere else
 	addCollapsibleInfoListeners();
+}
+
+function colorCodePriority(priorityElement) {
+	if (priorityElement.textContent == "Urgent")
+		priorityElement.style.color = "red";
+	else if (priorityElement.textContent == "Important")
+		priorityElement.style.color = "yellow";
+	else if (priorityElement.textContent == "Low Priority")
+		priorityElement.style.color = "mediumslateblue";
 }

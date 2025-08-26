@@ -36,14 +36,14 @@
 					<div>
 						<label for="item-priority">Priority</label
 						><select name="priority" id="item-priority">
-							<option value="urgent">Urgent</option>
-							<option value="important" selected>
+							<option value="Urgent">Urgent</option>
+							<option value="Important" selected>
 								Important
 							</option>
-							<option value="low-priority">Low Priority</option>
+							<option value="Low Priority">Low Priority</option>
 						</select>
 					</div>
-					<div>
+					<div class="buttons">
 						<button type="submit" formmethod="dialog">
 							Cancel
 						</button>
@@ -65,7 +65,7 @@
 						<label for="title">Name:</label>
 						<input type="text" name="title" id="title" />
 					</div>
-					<div>
+					<div class="buttons">
 						<button type="submit" formmethod="dialog">
 							Cancel
 						</button>
@@ -107,7 +107,7 @@
 						<option value="Low Priority">Low Priority</option>
 					</select>
 				</div>
-				<div>
+				<div class="buttons">
 					<button type="submit" formmethod="dialog">Cancel</button>
 					<button type="submit" id="submit-edit-todoitem">
 						Edit Item

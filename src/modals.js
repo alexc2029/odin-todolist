@@ -2,7 +2,7 @@ import { displayTodoItems } from "./dom-functions";
 import { createTodoItem, createTodoList } from "./todo-lists";
 
 export function initializeNewListModal() {
-	const addListButton = document.getElementById("new-todolist");
+	const addListButton = document.getElementById("new-todolist-button");
 	const addListModal = document.getElementById("new-todolist-modal");
 
 	addListButton.addEventListener("click", () => {

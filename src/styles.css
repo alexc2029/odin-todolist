@@ -80,6 +80,11 @@ img {
 	}
 	& div:hover {
 		background-color: #3a3838;
+		cursor: pointer;
+	}
+	& div:active {
+		transform: translateY(1px);
+		background-color: #2b2a2a;
 	}
 }
 
@@ -122,6 +127,7 @@ h2 {
 	& .top-row:hover,
 	.top-row.active {
 		background-color: #3a3838;
+		cursor: pointer;
 		& .edit-icon {
 			visibility: visible;
 		}
@@ -166,8 +172,84 @@ button {
 	gap: 5px;
 	background-color: inherit;
 	color: #cf5c36;
+	width: fit-content;
 }
 
 button:hover {
 	background-color: #3a3838;
+	cursor: pointer;
+}
+
+button:active {
+	transform: translateY(1px);
+	background-color: #2b2a2a;
+}
+
+button[type="submit"] {
+	padding: 5px;
+}
+
+dialog {
+	background-color: black;
+	color: white;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	& .buttons {
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+		gap: 10px;
+	}
+
+	& > div {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	& input {
+		outline: none;
+		background-color: black;
+		border: 2px solid #7c7c7c;
+		border-radius: 5px;
+		width: 235px;
+		color: white;
+	}
+
+	& label {
+		color: #efc88b;
+	}
+
+	& select {
+		background-color: black;
+		border: 2px solid #7c7c7c;
+		color: white;
+		border-radius: 5px;
+	}
+
+	& input:focus,
+	input:focus-visible,
+	select:focus,
+	select:focus-visible {
+		border: 2px solid #efc88b;
+	}
+
+	& option[value="Urgent"] {
+		color: rgb(255, 0, 0);
+	}
+	& option[value="Important"] {
+		color: yellow;
+	}
+	& option[value="Low Priority"] {
+		color: mediumslateblue;
+	}
+	& ::-webkit-calendar-picker-indicator {
+		filter: invert(89%) sepia(99%) saturate(4657%) hue-rotate(303deg)
+			brightness(113%) contrast(87%);
+	}
 }
