@@ -1,4 +1,4 @@
-import { createTodoList, createTodoItem } from "./todo-lists";
+import { createTodoList } from "./todo-lists";
 
 export function saveToLocalStorage(todoLists) {
 	localStorage.setItem("todoLists", JSON.stringify(todoLists));

@@ -1,6 +1,5 @@
 import { displaySidebarTodoList } from "./dom-functions";
 import { addViewTodolistListener } from "./event-listeners";
-import { saveToLocalStorage } from "./local-storage";
 
 export class TodoList {
 	static todoLists = [];
@@ -11,12 +10,10 @@ export class TodoList {
 	}
 	addTodoItem(item) {
 		this.items.push(item);
-		saveToLocalStorage(TodoList.todoLists);
 	}
 	deleteTodoItem(item) {
 		const index = this.items.findIndex((element) => element.id == item.id);
 		this.items.splice(index, 1);
-		saveToLocalStorage(TodoList.todoLists);
 	}
 }
 
@@ -24,7 +21,6 @@ export function createTodoList(title) {
 	const todoList = new TodoList(title);
 	const todoListContainer = displaySidebarTodoList(todoList);
 	addViewTodolistListener(todoListContainer, todoList);
-	saveToLocalStorage(TodoList.todoLists);
 	return todoList;
 }
 

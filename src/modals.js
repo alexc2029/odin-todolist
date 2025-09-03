@@ -1,5 +1,6 @@
 import { displayTodoItems } from "./dom-functions";
-import { createTodoItem, createTodoList } from "./todo-lists";
+import { createTodoItem, createTodoList, TodoList } from "./todo-lists";
+import { saveToLocalStorage } from "./local-storage";
 
 export function initializeNewListModal() {
 	const addListButton = document.getElementById("new-todolist-button");
@@ -17,6 +18,7 @@ export function initializeNewListModal() {
 	submitListFormButton.addEventListener("click", (e) => {
 		e.preventDefault();
 		createTodoList(title.value);
+		saveToLocalStorage(TodoList.todoLists);
 		addListModal.close();
 		location.reload();
 	});
@@ -59,6 +61,7 @@ export function initializeNewItemModal(todoLists) {
 			(todolist) => todolist.title == listSubmitted.value
 		);
 		todoLists[listIndex].addTodoItem(todoitem);
+		saveToLocalStorage(TodoList.todoLists);
 		title.value = "";
 		description.value = "";
 		date.value = "";
@@ -103,6 +106,7 @@ export function initializeEditItemModal(item, editIcon, todoList) {
 				item.dueDate = new Date(date.value);
 				item.priority = priority.value;
 
+				saveToLocalStorage(TodoList.todoLists);
 				displayTodoItems(todoList);
 
 				editItemModal.close();
