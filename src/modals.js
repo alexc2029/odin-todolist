@@ -98,8 +98,6 @@ export function initializeEditItemModal(item, editIcon, todoList) {
 				const date = document.getElementById("edit-item-date");
 				const priority = document.getElementById("edit-item-priority");
 
-				console.log(e.target);
-
 				item.title = title.value;
 				item.description = description.value;
 				item.dueDate = new Date(date.value);

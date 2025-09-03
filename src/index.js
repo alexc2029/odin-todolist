@@ -8,7 +8,6 @@ import { displayTodoItems } from "./dom-functions";
 import { loadFromLocalStorage } from "./local-storage";
 
 let todoLists = loadFromLocalStorage();
-console.log(todoLists);
 if (!todoLists) {
 	todoLists = initializeDefaultTodo();
 }

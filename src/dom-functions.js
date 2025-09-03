@@ -84,9 +84,9 @@ export function displayTodoItems(todoList) {
 
 function colorCodePriority(priorityElement) {
 	if (priorityElement.textContent == "Urgent")
-		priorityElement.style.color = "red";
+		priorityElement.classList.add("priority-urgent");
 	else if (priorityElement.textContent == "Important")
-		priorityElement.style.color = "yellow";
+		priorityElement.classList.add("priority-important");
 	else if (priorityElement.textContent == "Low Priority")
-		priorityElement.style.color = "mediumslateblue";
+		priorityElement.classList.add("priority-low");
 }
