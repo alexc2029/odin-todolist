@@ -45,7 +45,7 @@ export function displayTodoItems(todoList) {
 		checkbox.className = "todo-check";
 
 		/// should find a way to call this from somewhere else
-		addTodoCheckListener(item, todoList, checkbox);
+		addTodoCheckListener(item, todoList, checkbox, topRow);
 
 		const editIcon = document.createElement("img");
 		editIcon.src = editSvg;

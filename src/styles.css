@@ -52,6 +52,7 @@ body {
 	grid-template-columns: 1fr 4fr;
 	background-color: black;
 	color: #eee5e9;
+	padding: 20px;
 }
 
 img {
@@ -64,19 +65,27 @@ img {
 	flex-direction: column;
 
 	& #new-todoitem-button {
-		margin-bottom: 15px;
+		margin-bottom: 25px;
 	}
 
 	& #new-todolist-button {
-		margin-top: 15px;
+		margin-top: 25px;
+	}
+
+	& h2 {
+		font-size: 28px;
 	}
 }
 
 #sidebar-todolists {
-	& div {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	& > div {
 		display: flex;
 		gap: 5px;
 		width: fit-content;
+		margin-left: 20px;
 	}
 	& div:hover {
 		background-color: #3a3838;
@@ -252,4 +261,9 @@ form {
 		filter: invert(89%) sepia(99%) saturate(4657%) hue-rotate(303deg)
 			brightness(113%) contrast(87%);
 	}
+}
+
+.completed-todo {
+	text-decoration: line-through;
+	color: #7c7c7c;
 }

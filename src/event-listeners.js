@@ -29,12 +29,11 @@ export function addCollapsibleInfoListeners() {
 	}
 }
 
-export function addTodoCheckListener(item, todoList, checkbox) {
+export function addTodoCheckListener(item, todoList, checkbox, topRow) {
 	checkbox.addEventListener("click", () => {
 		todoList.deleteTodoItem(item);
+		console.log(item);
+		checkbox.disabled = true;
+		topRow.classList.add("completed-todo");
 	});
-}
-
-export function addTodoEditListener(item, todoList, editButton) {
-	//todo
 }

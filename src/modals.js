@@ -56,6 +56,10 @@ export function initializeNewItemModal(todoLists) {
 			(todolist) => todolist.title == listSubmitted.value
 		);
 		todoLists[listIndex].addTodoItem(todoitem);
+		title.value = "";
+		description.value = "";
+		date.value = "";
+		priority.value = "Important";
 		addItemModal.close();
 		displayTodoItems(todoLists[listIndex]);
 	});

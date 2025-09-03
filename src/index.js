@@ -1,12 +1,18 @@
 import "./styles.css";
-import { createTodoItem, TodoList } from "./todo-lists";
 import { initializeDefaultTodo } from "./initializations";
 
 import { initializeNewItemModal, initializeNewListModal } from "./modals";
 
 import { displayTodoItems } from "./dom-functions";
 
-let todoLists = initializeDefaultTodo();
+import { loadFromLocalStorage } from "./local-storage";
+
+let todoLists = loadFromLocalStorage();
+console.log(todoLists);
+if (!todoLists) {
+	todoLists = initializeDefaultTodo();
+}
+
 initializeNewListModal();
 initializeNewItemModal(todoLists);
 displayTodoItems(todoLists[0]);
