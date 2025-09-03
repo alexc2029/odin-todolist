@@ -5,7 +5,10 @@ export function initializeNewListModal() {
 	const addListButton = document.getElementById("new-todolist-button");
 	const addListModal = document.getElementById("new-todolist-modal");
 
+	const title = document.getElementById("title");
+
 	addListButton.addEventListener("click", () => {
+		title.value = "";
 		addListModal.showModal();
 	});
 
@@ -13,9 +16,9 @@ export function initializeNewListModal() {
 
 	submitListFormButton.addEventListener("click", (e) => {
 		e.preventDefault();
-		const title = document.getElementById("title");
 		createTodoList(title.value);
 		addListModal.close();
+		location.reload();
 	});
 }
 
@@ -25,14 +28,14 @@ export function initializeNewItemModal(todoLists) {
 
 	const list = document.getElementById("list");
 
-	for (let listElement of todoLists) {
-		const listOption = document.createElement("option");
-		listOption.value = listElement.title;
-		listOption.textContent = listElement.title;
-		list.appendChild(listOption);
-	}
-
 	addItemButton.addEventListener("click", () => {
+		list.innerHTML = "";
+		for (let listElement of todoLists) {
+			const listOption = document.createElement("option");
+			listOption.value = listElement.title;
+			listOption.textContent = listElement.title;
+			list.appendChild(listOption);
+		}
 		addItemModal.showModal();
 	});
 
