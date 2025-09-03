@@ -1,6 +1,3 @@
-import { displaySidebarTodoList } from "./dom-functions";
-import { addViewTodolistListener } from "./event-listeners";
-
 export class TodoList {
 	static todoLists = [];
 	constructor(title) {
@@ -15,13 +12,6 @@ export class TodoList {
 		const index = this.items.findIndex((element) => element.id == item.id);
 		this.items.splice(index, 1);
 	}
-}
-
-export function createTodoList(title) {
-	const todoList = new TodoList(title);
-	const todoListContainer = displaySidebarTodoList(todoList);
-	addViewTodolistListener(todoListContainer, todoList);
-	return todoList;
 }
 
 export function createTodoItem(title, description, dueDate, priority) {

@@ -1,10 +1,9 @@
-import { displayTodoItems } from "./dom-functions";
 import { TodoList } from "./todo-lists";
 import { saveToLocalStorage } from "./local-storage";
 
-export function addViewTodolistListener(todoListContainer, todoList) {
+export function addViewTodolistListener(todoListContainer, todoList, onSwitch) {
 	todoListContainer.addEventListener("click", () => {
-		displayTodoItems(todoList);
+		onSwitch(todoList);
 	});
 }
 

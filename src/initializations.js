@@ -1,5 +1,5 @@
-import { createTodoItem, createTodoList } from "./todo-lists";
-
+import { createTodoItem } from "./todo-lists";
+import { createTodoList } from ".";
 import { createDate } from "./dates";
 
 export function initializeDefaultTodo() {

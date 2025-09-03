@@ -1,10 +1,5 @@
 import tagIcon from "./icons/tag.svg";
 import editSvg from "./icons/edit.svg";
-import {
-	addCollapsibleInfoListeners,
-	addTodoCheckListener,
-} from "./event-listeners";
-import { initializeEditItemModal } from "./modals";
 import { formatDate } from "./dates";
 
 export function displaySidebarTodoList(todoList) {
@@ -33,6 +28,7 @@ export function displayTodoItems(todoList) {
 
 		const topRow = document.createElement("div");
 		topRow.className = "top-row";
+		topRow.dataset.id = item.id;
 
 		const title = document.createElement("h2");
 		title.textContent = item.title;
@@ -43,17 +39,13 @@ export function displayTodoItems(todoList) {
 		const checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
 		checkbox.className = "todo-check";
-
-		/// should find a way to call this from somewhere else
-		addTodoCheckListener(item, todoList, checkbox, topRow);
+		checkbox.dataset.id = item.id;
 
 		const editIcon = document.createElement("img");
 		editIcon.src = editSvg;
 		editIcon.className = "edit-icon";
+		editIcon.dataset.id = item.id;
 		topRow.appendChild(editIcon);
-
-		/// should find a way to call this from somewhere else
-		initializeEditItemModal(item, editIcon, todoList);
 
 		const dueDate = document.createElement("div");
 		dueDate.textContent = formatDate(item.dueDate);
@@ -78,8 +70,6 @@ export function displayTodoItems(todoList) {
 
 		main.appendChild(card);
 	}
-	/// should find a way to call this from somewhere else
-	addCollapsibleInfoListeners();
 }
 
 function colorCodePriority(priorityElement) {
