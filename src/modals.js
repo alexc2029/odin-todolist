@@ -1,10 +1,7 @@
-import { displayTodoItems } from "./dom-functions";
-import { createTodoItem, TodoList } from "./todo-lists";
-import { createTodoList } from ".";
+import { TodoList } from "./todo-lists";
 import { saveToLocalStorage } from "./local-storage";
-import { displayList } from ".";
 
-export function initializeNewListModal() {
+export function initializeNewListModal(onCreateTodoList) {
 	const addListButton = document.getElementById("new-todolist-button");
 	const addListModal = document.getElementById("new-todolist-modal");
 
@@ -19,14 +16,18 @@ export function initializeNewListModal() {
 
 	submitListFormButton.addEventListener("click", (e) => {
 		e.preventDefault();
-		const newList = createTodoList(title.value);
+		const newList = onCreateTodoList(title.value);
 		saveToLocalStorage(TodoList.todoLists);
 		addListModal.close();
 		location.reload();
 	});
 }
 
-export function initializeNewItemModal(todoLists) {
+export function initializeNewItemModal(
+	todoLists,
+	onCreateTodoItem,
+	onModalClose
+) {
 	const addItemButton = document.getElementById("new-todoitem-button");
 	const addItemModal = document.getElementById("new-todoitem-modal");
 
@@ -53,7 +54,7 @@ export function initializeNewItemModal(todoLists) {
 		const date = document.getElementById("item-date");
 		const priority = document.getElementById("item-priority");
 
-		const todoitem = createTodoItem(
+		const todoitem = onCreateTodoItem(
 			title.value,
 			description.value,
 			new Date(date.value),
@@ -69,7 +70,7 @@ export function initializeNewItemModal(todoLists) {
 		date.value = "";
 		priority.value = "Important";
 		addItemModal.close();
-		displayList(todoLists[listIndex]);
+		onModalClose(todoLists[listIndex]);
 	});
 }
 
